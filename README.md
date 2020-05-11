@@ -136,7 +136,7 @@ curl -sL "https://raw.githubusercontent.com/calebmah/supervised-installer/master
 Some installation types require flags to identify the computer type, for example, when using a Raspberry Pi 4, the flag `-- -m raspberrypi4` is required. The install script would then look like this:	
 
 ```bash	
-curl -sL "https://raw.githubusercontent.com/calebmah/supervised-installer/master/installer.sh" | bash -s -- -m raspberrypi4	
+curl -sL "https://raw.githubusercontent.com/calebmah/supervised-installer/master/installer.sh" | bash -s -- -m raspberrypi3	
 ```	
 
 #### Other machine types	
