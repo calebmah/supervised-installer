@@ -160,3 +160,13 @@ curl -sL "https://raw.githubusercontent.com/calebmah/supervised-installer/master
 See the [installer](https://github.com/calebmah/supervised-installer) GitHub page for an up-to-date listing of supported machine types.	
 
 If you can not find your machine type in the list, you should pick the `qemu` release. i.e., `qemux86-64` for a normal 64-bit Linux distribution, or `qemuarm-64` for most modern ARM-based target like Raspberry Pi clones, or TV boxes.
+
+## Installing portainer
+
+Assuming you are on a PC with Ubuntu/Debian, or a Pi with Raspbian as the base OS, you can install Portainer to manage anything running in Docker.
+
+```bash	
+docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+```
+
+You’ll then access Portainer at YOUR_MACHINE_IP:9000
