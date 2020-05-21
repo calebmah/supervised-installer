@@ -170,3 +170,7 @@ docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.
 ```
 
 You’ll then access Portainer at YOUR_MACHINE_IP:9000
+
+## Add swap file
+
+Follow instructions here: https://itsfoss.com/create-swap-file-linux/
