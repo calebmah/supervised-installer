@@ -161,15 +161,43 @@ See the [installer](https://github.com/calebmah/supervised-installer) GitHub pag
 
 If you can not find your machine type in the list, you should pick the `qemu` release. i.e., `qemux86-64` for a normal 64-bit Linux distribution, or `qemuarm-64` for most modern ARM-based target like Raspberry Pi clones, or TV boxes.
 
-## Installing portainer
+## Installing Portainer
 
 Assuming you are on a PC with Ubuntu/Debian, or a Pi with Raspbian as the base OS, you can install Portainer to manage anything running in Docker.
 
 ```bash	
-docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+sudo docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 ```
 
 You’ll then access Portainer at YOUR_MACHINE_IP:9000
+
+## Updating Portainer
+
+```bash	
+sudo docker stop portainer
+sudo docker rm portainer
+sudo docker image ls | grep portainer
+```
+
+Make sure the containter is stopped and removed, then take that ID from above, and:
+
+```bash	
+docker image rm xxxxxxxxxxxx
+```
+
+Do that for each image listed for portainer. DO NOT DELETE portainer_data volume unless you want to TOTALLY start over. You will LOSE your configuration data if you do that.
+
+Now do a:
+
+```bash	
+docker pull portainer/portainer
+```
+
+Then create and start the replacement container using your old data:
+
+```bash	
+sudo docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+```
 
 ## Add swap file
 
